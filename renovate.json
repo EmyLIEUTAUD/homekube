@@ -3,5 +3,7 @@
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard"
-  ]
+  ],
+  "timezone": "Europe/Paris",
+  "schedule": ["0 12,20 * * *"]
 }
