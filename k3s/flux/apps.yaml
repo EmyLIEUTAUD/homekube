@@ -11,3 +11,4 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./k3s/apps
+  prune: true
