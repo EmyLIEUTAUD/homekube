@@ -5,5 +5,5 @@
     ":disableDependencyDashboard"
   ],
   "timezone": "Europe/Paris",
-  "schedule": ["0 12,20 * * *"]
+  "schedule": ["* 12,20 * * *"]
 }
