@@ -27,3 +27,16 @@ flux bootstrap github \
   --path=./k3s/flux \
   --personal
 ```
+
+## SOPS
+```
+age-keygen -o age.agekey
+
+cat age.agekey |
+kubectl create secret generic sops-age \
+--namespace=flux-system \
+--from-file=age.agekey=/dev/stdin
+
+sops --age=<age-public-key> \
+--encrypt --encrypted-regex '^(data|stringData)$' --in-place .sops.yaml
+```

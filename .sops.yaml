@@ -1,0 +1,9 @@
+creation_rules:
+  - encrypted_regex: '^(data|stringData)$'
+    key_groups:
+      - age:
+          - age13c2xt7plpv0g6y9qcazat02w9l35wcadv8xzqntpr4x3c80u0cjqggarnh
+
+stores:
+  yaml:
+    indent: 2
