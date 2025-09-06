@@ -34,5 +34,5 @@ spec:
     storageClass:
       name: nfs
       defaultClass: true
-      pathPattern: "${namespace}/${pvcName}"
+      pathPattern: "${.PVC.namespace}/${.PVC.name}"
       reclaimPolicy: Retain
