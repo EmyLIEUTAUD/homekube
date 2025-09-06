@@ -16,7 +16,7 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: nfs
+      chart: nfs-subdir-external-provisioner
       version: 4.0.17
       sourceRef:
         kind: HelmRepository
@@ -34,4 +34,5 @@ spec:
     storageClass:
       name: nfs
       defaultClass: true
+      pathPattern: "${namespace}/${pvcName}"
       reclaimPolicy: Retain
