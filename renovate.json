@@ -5,5 +5,14 @@
     ":disableDependencyDashboard"
   ],
   "timezone": "Europe/Paris",
-  "schedule": ["* 12,20 * * *"]
+  "schedule": ["* 12,20 * * *"],
+  "kubernetes": {
+    "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
+  },
+  "helm-values": {
+    "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
+  },
+  "flux": {
+    "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
+  }
 }
