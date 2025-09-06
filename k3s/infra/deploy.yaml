@@ -1,3 +1,4 @@
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -7,6 +8,21 @@ spec:
   interval: 10m0s
   targetNamespace: kube-system
   path: ./k3s/infra/cilium
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: nfs
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  targetNamespace: nfs
+  path: ./k3s/infra/nfs
   prune: true
   sourceRef:
     kind: GitRepository
