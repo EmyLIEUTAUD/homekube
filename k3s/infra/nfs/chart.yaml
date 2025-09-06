@@ -31,6 +31,9 @@ spec:
       valuesKey: path
       targetPath: nfs.path
   values:
+    nfs:
+      mountOptions:
+        - nfsvers=3
     storageClass:
       name: nfs
       defaultClass: true
