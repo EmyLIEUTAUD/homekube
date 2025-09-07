@@ -36,7 +36,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  targetNamespace: traefik
+  targetNamespace: kube-system
   path: ./k3s/infra/traefik
   prune: true
   sourceRef:
