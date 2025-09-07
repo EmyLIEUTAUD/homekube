@@ -1,0 +1,29 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: traefik
+spec:
+  interval: 15m
+  url: https://traefik.github.io/charts
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: traefik
+      version: 37.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+  values:
+    ingressClass:
+      name: traefik
+    providers:
+      kubernetesIngress:
+        ingressClass: "traefik"
