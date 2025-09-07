@@ -18,9 +18,9 @@ spec:
         image: jellyfin/jellyfin:10.10.1
         env:
           - name: JELLYFIN_CONFIG_DIR
-            values: /config
+            value: /config
           - name: JELLYFIN_CACHE_DIR
-            values: /cache
+            value: /cache
           - name: TZ
             value: Europe/Paris
         volumeMounts:
