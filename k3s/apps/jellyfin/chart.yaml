@@ -41,6 +41,8 @@ spec:
             persistentVolumeClaim:
               claimName: jellyfin-media
         service: 8096
+        ingress:
+          domain: jellyfin.local
         pvc:
           - jellyfin-config
           - jellyfin-cache
