@@ -11,7 +11,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 5Go
+      storage: 5Gi
   storageClassName: nfs
 {{- end }}
 {{- end }}
