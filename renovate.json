@@ -5,7 +5,7 @@
     ":disableDependencyDashboard"
   ],
   "timezone": "Europe/Paris",
-  "schedule": ["* 12,20 * * *"],
+  "schedule": ["* 8-21 * * *"],
   "kubernetes": {
     "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
   },
