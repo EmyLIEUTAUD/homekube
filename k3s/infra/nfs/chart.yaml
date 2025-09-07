@@ -34,6 +34,7 @@ spec:
     nfs:
       mountOptions:
         - nfsvers=3
+        - nolock
     storageClass:
       name: nfs
       defaultClass: true
