@@ -1,6 +1,7 @@
 {{- range .Values.apps }}
 {{- if .pvc }}
 {{- range .pvc }}
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
