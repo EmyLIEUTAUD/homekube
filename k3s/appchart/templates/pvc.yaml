@@ -1,0 +1,17 @@
+{{- range .Values.apps }}
+{{- if .pvc }}
+{{- range .pvc }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ . }}
+spec:
+  accessModes: 
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Go
+  storageClassName: nfs
+{{- end }}
+{{- end }}
+{{- end }}

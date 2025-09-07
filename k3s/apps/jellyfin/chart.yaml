@@ -1,0 +1,47 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jellyfin
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: jellyfin
+        image: jellyfin/jellyfin:10.10.1
+        env:
+          - name: JELLYFIN_CONFIG_DIR
+            values: /config
+          - name: JELLYFIN_CACHE_DIR
+            values: /cache
+          - name: TZ
+            value: Europe/Paris
+        volumeMounts:
+          - name: jellyfin-config
+            mountPath: /config
+          - name: jellyfin-cache
+            mountPath: /cache
+          - name: jellyfin-media
+            mountPath: /media
+        volumes:
+          - name: jellyfin-config
+            persistentVolumeClaim:
+              claimName: jellyfin-config
+          - name: jellyfin-cache
+            persistentVolumeClaim:
+              claimName: jellyfin-cache
+          - name: jellyfin-media
+            persistentVolumeClaim:
+              claimName: jellyfin-media
+        service: 8096
+        pvc:
+          - jellyfin-config
+          - jellyfin-cache
+          - jellyfin-media
