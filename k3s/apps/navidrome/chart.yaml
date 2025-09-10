@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: navidrome
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: navidrome
+        image: deluan/navidrome:0.58.0
+        volumeMounts:
+          - name: navidrome-data
+            mountPath: /data
+          - name: navidrome-music
+            mountPath: /music
+        volumes:
+          - name: navidrome-data
+            persistentVolumeClaim:
+              claimName: navidrome-data
+          - name: navidrome-music
+            persistentVolumeClaim:
+              claimName: navidrome-music
+        service: 4533
+        ingress:
+          domain: navidrome.local
+        pvc:
+          - navidrome-data
+          - navidrome-music
