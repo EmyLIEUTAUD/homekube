@@ -33,4 +33,11 @@ spec:
         hosts:
           - grafana.lan
         ingressClassName: traefik
-
+    prometheus:
+      prometheusSpec:
+        additionalScrapeConfigs:
+          - job_name: 'navidrome'
+            metrics_path: /metrics
+            scheme: http
+            static_configs:
+              - targets: ['navidrome:4533']

@@ -16,6 +16,9 @@ spec:
     apps:
       - name: navidrome
         image: deluan/navidrome:0.58.0
+        env:
+          - name: ND_PROMETHEUS_ENABLED
+            value: "true"
         volumeMounts:
           - name: navidrome-data
             mountPath: /data
