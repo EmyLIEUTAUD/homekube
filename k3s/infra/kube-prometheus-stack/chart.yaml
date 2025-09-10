@@ -31,6 +31,6 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - grafana.local
+          - grafana.lan
         ingressClassName: traefik
 
