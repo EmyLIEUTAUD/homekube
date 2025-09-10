@@ -21,17 +21,17 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
-    values:
-      crds:
-        upgradeJob:
-          enabled: true
-      alertmanager:
-        enabled: false
-      grafana:
-        ingress:
-          enabled: true
-          hosts:
-            - grafana.local
-          annotations:
-            kubernetes.io/ingress.class: traefik
+  values:
+    crds:
+      upgradeJob:
+        enabled: true
+    alertmanager:
+      enabled: false
+    grafana:
+      ingress:
+        enabled: true
+        hosts:
+          - grafana.local
+        annotations:
+          kubernetes.io/ingress.class: traefik
 
