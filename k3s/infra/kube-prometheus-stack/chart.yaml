@@ -21,3 +21,12 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
+    values:
+      crds:
+        upgradeJob:
+          enabled: true
+      alertmanager:
+        enabled: false
+      grafana:
+        ingress:
+          enabled: true
