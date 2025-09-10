@@ -32,6 +32,5 @@ spec:
         enabled: true
         hosts:
           - grafana.local
-        annotations:
-          kubernetes.io/ingress.class: traefik
+        ingressClassName: traefik
 
