@@ -33,7 +33,7 @@ spec:
               claimName: navidrome-music
         service: 4533
         ingress:
-          domain: navidrome.local
+          domain: navidrome.home
         pvc:
           - navidrome-data
           - navidrome-music

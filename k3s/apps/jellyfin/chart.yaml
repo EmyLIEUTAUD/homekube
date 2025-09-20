@@ -42,7 +42,7 @@ spec:
               claimName: jellyfin-media
         service: 8096
         ingress:
-          domain: jellyfin.local
+          domain: jellyfin.home
         pvc:
           - jellyfin-config
           - jellyfin-cache

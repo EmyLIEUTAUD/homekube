@@ -31,7 +31,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - grafana.lan
+          - grafana.home
         ingressClassName: traefik
     prometheus:
       prometheusSpec:
