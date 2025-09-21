@@ -19,11 +19,17 @@ spec:
         env:
           - name: ND_PROMETHEUS_ENABLED
             value: "true"
+          - name: ND_PLUGINS_ENABLED
+            value: "true"
+          - name: ND_PLUGINS_FOLDER
+            value: /plugin
         volumeMounts:
           - name: navidrome-data
             mountPath: /data
           - name: navidrome-music
             mountPath: /music
+          - name: navidrome-plugin
+            mountPath: /plugin
         volumes:
           - name: navidrome-data
             persistentVolumeClaim:
@@ -31,9 +37,13 @@ spec:
           - name: navidrome-music
             persistentVolumeClaim:
               claimName: navidrome-music
+          - name: navidrome-plugin
+            persistentVolumeClaim:
+              claimName: navidrome-plugin
         service: 4533
         ingress:
           domain: navidrome.home
         pvc:
           - navidrome-data
           - navidrome-music
+          - navidrome-plugin
