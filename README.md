@@ -10,6 +10,8 @@ helm repo update
 helm install cilium cilium/cilium \
   --namespace kube-system \
   --set kubeProxyReplacement=true \
+  --set k8sServiceHost=127.0.0.1 \
+  --set k8sServicePort=6443 \
   --set operator.replicas=1 \
   --set operator.rollOutPods=true \
   --set rollOutCiliumPods=true
