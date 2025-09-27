@@ -23,7 +23,7 @@ spec:
         name: cilium
   values:
     kubeProxyReplacement: true
-    k8sServiceHost: 127.0.0.1
+    k8sServiceHost: 192.168.1.55
     k8sServicePort: 6443
     operator:
       replicas: 1
