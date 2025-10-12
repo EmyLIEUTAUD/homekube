@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: home-assistant
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: home-assistant
+        image: ghcr.io/home-assistant/home-assistant:2025.10.2
+        volumeMounts:
+          - name: home-assistant-config
+            mountPath: /config
+          - name: home-assistant-localtime
+            mountPath: /etc/localtime
+          - name: home-assistant-dbus
+            mountPath: /run/dbus
+        volumes:
+          - name: home-assistant-config
+            persistentVolumeClaim:
+              claimName: home-assistant-config
+          - name: home-assistant-localtime
+            persistentVolumeClaim:
+              claimName: home-assistant-localtime
+          - name: home-assistant-dbus
+            persistentVolumeClaim:
+              claimName: home-assistant-dbus
+        service: 8123
+        ingress:
+          domain: home-assistant.home
+        pvc:
+          - home-assistant-config
+          - home-assistant-localtime
+          - home-assistant-dbus
