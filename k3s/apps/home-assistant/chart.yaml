@@ -16,6 +16,7 @@ spec:
     apps:
       - name: home-assistant
         image: ghcr.io/home-assistant/home-assistant:2025.10.2
+        containerPort: 8123
         volumeMounts:
           - name: home-assistant-config
             mountPath: /config
