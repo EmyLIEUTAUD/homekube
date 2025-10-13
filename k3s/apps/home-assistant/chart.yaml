@@ -19,15 +19,14 @@ spec:
         containerPort: 8123
         volumeMounts:
           - name: home-assistant-config
-            mountPath: /config/configuration.yaml
-            subPath: configuration.yaml
+            mountPath: /config
           - name: home-assistant-localtime
             mountPath: /etc/localtime
           - name: home-assistant-dbus
             mountPath: /run/dbus
         volumes:
           - name: home-assistant-config
-            configMap:
+            persistentVolumeClaim:
               name: home-assistant-config
           - name: home-assistant-localtime
             persistentVolumeClaim:
