@@ -27,7 +27,7 @@ spec:
         volumes:
           - name: home-assistant-config
             persistentVolumeClaim:
-              name: home-assistant-config
+              claimName: home-assistant-config
           - name: home-assistant-localtime
             persistentVolumeClaim:
               claimName: home-assistant-localtime
