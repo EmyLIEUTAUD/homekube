@@ -1,23 +1,23 @@
 apiVersion: v1
 data:
-  address: ENC[AES256_GCM,data:PTbH29W38N4WlL8tKqPgMUqAd1eJCD8jibcZvQVCziStAZMhxdPgr+TbOkgH9+pnQUL5ZqtTq6ENyxf74ofDfuyDCNazrDY4O0rr0RjNR0d7i7/bAnoF5EqVApo=,iv:ZJo0L3HEhx16I/737sTUpX2xxBFxLvfkbDaGv44Y2XM=,tag:PDdZCAB0MpTSR/YzeyT8gA==,type:str]
+  address: ENC[AES256_GCM,data:J1i6lkxLod6/p1ivmGVbet+3bu3JEh5RyW/8gV/4j3F5IUuGbAJ1G1Cd1Jbz5/9snGy9Lbu/rcWklqPeKwip9cLJ3AH8NwsrpGk/6u8s+hbHn8TGc6rP5TfkYD2lCyEBuMlkbEaJChoLVVf6aBLubvwRslHSvVt+VZolnV5cOIGIBQ9P5bE1sXvzTKVcxUVr8G+QD6vswhAaf6aNAN4IF0dOE8I=,iv:hBDijkpYB48TLD2Tj9E/whDJDgoJ7q8Lupus2blCEAU=,tag:yJXv6TwXKgeiFAIJ/F91Og==,type:str]
 kind: Secret
 metadata:
+  creationTimestamp: null
   name: discord-flux-webhook
   namespace: flux-system
-type: Opaque
 sops:
   age:
     - recipient: age13c2xt7plpv0g6y9qcazat02w9l35wcadv8xzqntpr4x3c80u0cjqggarnh
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBKUTVBdFUrZXdkVEFvV24r
-        MTR3NG8xdGk4b3ZnSDlhRDh2V3JOYUVRZndjCkJTSzgrakNsUks3Ri9DL1V6ckZi
-        WExxbXc2NEtWcG1mWFlkWUtzSFlYakUKLS0tIHVVSjkwdFpsQXdiWHBIZ2Z5UTdZ
-        MGNEellOWHQzTjVyVTk4NXVqc1JPQTAKCkl++7rxpC7L3y7ndrwEuzIHlNOsNckd
-        12685WJISChAwc6MWokEXw/+Yo2viKVXRuOQXeIE3qLH9w5umHV+uA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5N0RYbTZyTXNZV05xdFBn
+        UVBZUlVnMEhZRFA0ZUhPMDdkbGJRLzBVeUVFCm5mdkNXRkVzNEgvekorRTl5OVZK
+        ckwrKzduclNYOUJCZTdldzA4cmRwUTQKLS0tIGtTQlc5aFNCSU5PUFBtSk1GVHlL
+        WGh4NFhiWElBb2NHSFBvVmhybFRZVEUKBK7sS3NovLmt98lWoOAUTp5fOPcg8Yl7
+        x9He9/m+LmbC8ClOMKe40KqqqPmf28zMvqtH/BpMaFdkOHNnYcARGw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-10-13T19:39:24Z"
-  mac: ENC[AES256_GCM,data:ZTqNa0Fh5Drxh1v6QFSu2wQjix1ZEe4wwbPbyF1GmPlT8j9LdgvBvTMw8z0OTqMtxVv7Ave9gPB8igFAlscWhzI1uTV4pFeTruA/x8btHmU8ijDGOKKQTNSY3xDqjUqbDeEJZHgLBt8+YRve0erqztiDSUqIegvq8SBTAruMdvQ=,iv:jMvKZhXlDAv7A0UXDgssIKJWaJlPU/gEQDXe8+lRi0o=,tag:jrdTX9lZ3ik03jVsOCHiIg==,type:str]
+  lastmodified: "2025-10-13T19:43:47Z"
+  mac: ENC[AES256_GCM,data:NAZjKiPyzJhw4PG5+0zXr/mp7n5jA3WDfu14AnjKEAdDRczVbVKmbirkRxvPDrInt7vUfHni4Y0JZEf/NBph8ucBDldsTQfNz6inLH0tcy/fiiNs8qsFjL+sy/LvM0Oo8jDvCsJAzoISLLEfAqmMPu10vcLfvK5FtGuzecGAYoI=,iv:eGTLfL48BxkcXUBNFebiKSSZBl6bUuBi9GfKH+KDzlU=,tag:evLKUd2EwneiWclRJKu91w==,type:str]
   encrypted_regex: ^(data|stringData)$
   version: 3.10.2
