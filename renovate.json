@@ -15,4 +15,14 @@
   "flux": {
     "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
   }
+  "minimumReleaseAge": "2 days",
+  "minor": {
+    "automerge": true
+  },
+  "patch": {
+    "automerge": true
+  },
+  "pin": {
+    "automerge": true
+  }
 }
