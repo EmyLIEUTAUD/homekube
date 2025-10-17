@@ -4,9 +4,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .name }}
-  {{- if .annotations }}
+  {{- if .ingress.annotations }}
   annotations:
-    {{- toYaml .annotations | nindent 4 }}
+    {{- toYaml .ingress.annotations | nindent 4 }}
   {{- end }}
 spec:
   ingressClassName: traefik
