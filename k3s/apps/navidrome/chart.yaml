@@ -23,14 +23,8 @@ spec:
             value: "true"
           - name: ND_PLUGINS_FOLDER
             value: /plugin
-          - name: ND_TRANSCODING_ENABLED
+          - name: ND_ENABLETRANSCODINGCONFIG
             value: "true"
-          - name: ND_FFMPEGBINARY
-            value: "/usr/bin/ffmpeg"
-          - name: ND_TRANSCODING_FORMAT_MP3_COMMAND
-            value: "ffmpeg -i %s -vn -acodec libmp3lame -ab 192k -f mp3 -"
-          - name: ND_TRANSCODING_FORMAT_MP3_MIMETYPE
-            value: "audio/mpeg"
         volumeMounts:
           - name: navidrome-data
             mountPath: /data
