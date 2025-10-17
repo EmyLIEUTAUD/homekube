@@ -23,6 +23,10 @@ spec:
             value: "true"
           - name: ND_PLUGINS_FOLDER
             value: /plugin
+          - name: ND_TRANSCODING_ENABLED
+            value: "true"
+          - name: ND_FFMPEGBINARY
+            value: "/usr/bin/ffmpeg"
         volumeMounts:
           - name: navidrome-data
             mountPath: /data
