@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: uptime-kuma
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: uptime-kuma
+        image: louislam/uptime-kuma:2.0.0
+        volumeMounts:
+          - name: uptime-kuma-data
+            mountPath: /app/data
+        volumes:
+          - name: uptime-kuma-data
+            persistentVolumeClaim:
+              claimName: uptime-kuma-data
+        service: 3001
+        ingress:
+          domain: uptime-kuma.home
+        pvc:
+          - uptime-kuma-data
