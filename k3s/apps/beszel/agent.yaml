@@ -28,7 +28,7 @@ spec:
               hostPort: 45876
           volumeMounts:
             - name: containerd-socket
-              mountPath: /run/k3s/containerd/containerd.sock
+              mountPath: /var/run/docker.sock
               readOnly: true
       volumes:
         - name: containerd-socket
