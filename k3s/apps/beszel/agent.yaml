@@ -17,10 +17,12 @@ spec:
         - env:
             - name: LISTEN
               value: "45876"
+            - name: HUB_URL
+              value: http://beszel.home
           envFrom:
             - secretRef:
                 name: beszel-agent-key
-          image: henrygd/beszel-agent:latest
+          image: henrygd/beszel-agent:0.14.1
           imagePullPolicy: Always
           name: beszel-agent
           ports:

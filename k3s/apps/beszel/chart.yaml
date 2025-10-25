@@ -31,6 +31,9 @@ spec:
         service: 8090
         ingress:
           domain: beszel.home
+          annotations:
+            traefik.ingress.kubernetes.io/proxy-read-timeout: "3600"
+            traefik.ingress.kubernetes.io/proxy-send-timeout: "3600"
         pvc:
           - beszel-data
           - beszel-socket
