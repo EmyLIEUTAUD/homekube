@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  KEY: ENC[AES256_GCM,data:Cm5Qpw8Scf+mJXNs9ZKQ4PLp2uG2EB5i+K2vXTNduosJ8JAFGKrOOyiEG7t5a3HpUePg1WgjIYgW5pBRypl8HZFpJBYnoHOAuqGiMh/lCEjfgieQwf3PRWhVRxsPu2xmLDoQrEvA40RulVkf,iv:BZKxThgGkn+4CAQDh5msuWmrL7pCmepv612ifrqw/rE=,tag:/Kj4pcI1y2pnl9csTzMQBQ==,type:str]
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: beszel-egent-key
+  namespace: supervision
+sops:
+  age:
+    - recipient: age13c2xt7plpv0g6y9qcazat02w9l35wcadv8xzqntpr4x3c80u0cjqggarnh
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVRmQxelU2ZFRoVCsvbmtu
+        VUtkM1EyTFU5NXlWR1E0MWFIUTNBTGFwa2tvCjZaSmpuWVZFeHp6SjJmQWtXODVP
+        dVhNNk1zTjloeVFTUVVJdFRrdkR0RjAKLS0tIFNDeEloU0hQWUcrQXdxa2JiU1RS
+        Mkx5WVF2VTNLWWV5UmN0VkIrbVBpS00KoIKaG5spmwOMBqTMSiUjt7BDzQKmmpVe
+        H0kKo6Tzz1aNHfRzePiYU7t9JNSw9xAJnOS00SnTSzzDDH7Cv5v/RQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-10-25T17:44:12Z"
+  mac: ENC[AES256_GCM,data:iVUDUAf+T+Eo3qWblu23V9RKKCeXnnJBJRlPsiiXMVEphtFO73Uf89hcsaNcZsq5vO9RlHVA/dQL1yRRz9NrXNI4zpHjsaatuSY1UuieMYSZKA9SB4CQgurltd4upOlqFXwKGzA1qldfvlJmHO888ICLpNnQXKgM1ViF2kY2gx4=,iv:+VRkObLc2wma+nMEI5uADJw5ZesAro97q8zyRqDP+eg=,tag:F3qfDV8KdZgKUjiC3vJxcA==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.11.0
