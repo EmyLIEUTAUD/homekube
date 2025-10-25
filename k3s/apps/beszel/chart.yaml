@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: beszel
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: beszel
+        image: henrygd/beszel:0.14.1
+        volumeMounts:
+          - name: beszel-data
+            mountPath: /beszel_data
+          - name: beszel-socket
+            mountPath: /beszel_socket
+        volumes:
+          - name: beszel-data
+            persistentVolumeClaim:
+              claimName: beszel-data
+          - name: beszel-socket
+            persistentVolumeClaim:
+              claimName: beszel-socket
+        service: 8090
+        ingress:
+          domain: beszel.home
+        pvc:
+          - beszel-data
+          - beszel-socket
