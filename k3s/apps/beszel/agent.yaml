@@ -22,6 +22,8 @@ spec:
           envFrom:
             - secretRef:
                 name: beszel-agent-key
+            - secretRef:
+                name: beszel-agent-token
           image: henrygd/beszel-agent:0.14.1
           imagePullPolicy: Always
           name: beszel-agent
