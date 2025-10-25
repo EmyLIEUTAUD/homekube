@@ -16,7 +16,6 @@
     "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
   },
   "minimumReleaseAge": "2 days",
-  "automergeType": "branch",
   "minor": {
     "automerge": true
   },
