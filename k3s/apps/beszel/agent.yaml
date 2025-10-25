@@ -27,13 +27,6 @@ spec:
             - containerPort: 45876
               hostPort: 45876
       restartPolicy: Always
-      tolerations:
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Exists
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/control-plane
-          operator: Exists
   updateStrategy:
     rollingUpdate:
       maxSurge: 0
