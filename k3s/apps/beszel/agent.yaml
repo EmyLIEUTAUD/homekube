@@ -18,7 +18,7 @@ spec:
             - name: LISTEN
               value: "45876"
             - name: HUB_URL
-              value: http://beszel.home
+              value: "http://beszel.supervision.svc.cluster.local:8090"
           envFrom:
             - secretRef:
                 name: beszel-agent-key
