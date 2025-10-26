@@ -30,6 +30,13 @@ spec:
         hosts:
           - grafana.home
         ingressClassName: traefik
+      persistence:
+        enabled: true
+        type: pvc
+        storageClassName: nfs
+        accessModes:
+          - ReadWriteOnce
+        size: 1Gi
     prometheus:
       prometheusSpec:
         additionalScrapeConfigs:
