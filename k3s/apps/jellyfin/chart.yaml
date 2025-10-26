@@ -19,6 +19,8 @@ spec:
         env:
           - name: JELLYFIN_CONFIG_DIR
             value: /config
+          - name: JELLYFIN_DATA_DIR
+            value: /data
           - name: JELLYFIN_CACHE_DIR
             value: /cache
           - name: TZ
@@ -26,6 +28,8 @@ spec:
         volumeMounts:
           - name: jellyfin-config
             mountPath: /config
+          - name: jellyfin-data
+            mountPath: /data
           - name: jellyfin-cache
             mountPath: /cache
           - name: jellyfin-media
@@ -34,6 +38,9 @@ spec:
           - name: jellyfin-config
             persistentVolumeClaim:
               claimName: jellyfin-config
+          - name: jellyfin-data
+            persistentVolumeClaim:
+              claimName: jellyfin-data
           - name: jellyfin-cache
             persistentVolumeClaim:
               claimName: jellyfin-cache
@@ -45,5 +52,6 @@ spec:
           domain: jellyfin.home
         pvc:
           - jellyfin-config
+          - jellyfin-data
           - jellyfin-cache
           - jellyfin-media
