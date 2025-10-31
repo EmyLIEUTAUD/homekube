@@ -25,5 +25,17 @@
   },
   "pin": {
     "automerge": true
-  }
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["/.*fluxcd.*/"],
+      "groupName": "fluxcd",
+      "groupSlug": "fluxcd"
+    },
+    {
+      "matchPackageNames": ["/.*beszel.*/"],
+      "groupName": "beszel",
+      "groupSlug": "beszel"
+    }
+  ]
 }
