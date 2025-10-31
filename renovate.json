@@ -5,7 +5,7 @@
     "docker:pinDigests"
   ],
   "timezone": "Europe/Paris",
-  "schedule": ["* 8-23 * * *"],
+  "schedule": ["* 8-21 * * *"],
   "ignoreTests": true,
   "kubernetes": {
     "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
