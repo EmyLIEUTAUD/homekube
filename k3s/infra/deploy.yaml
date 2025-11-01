@@ -47,6 +47,21 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: tailscale
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  targetNamespace: tailscale
+  path: ./k3s/infra/tailscale
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: kube-prometheus-stack
   namespace: flux-system
 spec:
