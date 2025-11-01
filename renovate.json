@@ -2,10 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":disableDependencyDashboard"
+    "docker:pinDigests"
   ],
   "timezone": "Europe/Paris",
   "schedule": ["* 8-21 * * *"],
+  "ignoreTests": true,
   "kubernetes": {
     "managerFilePatterns": ["/k3s/.+\\.ya?ml$/"]
   },
@@ -24,5 +25,17 @@
   },
   "pin": {
     "automerge": true
-  }
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["/.*fluxcd.*/"],
+      "groupName": "fluxcd",
+      "groupSlug": "fluxcd"
+    },
+    {
+      "matchPackageNames": ["/.*beszel.*/"],
+      "groupName": "beszel",
+      "groupSlug": "beszel"
+    }
+  ]
 }
