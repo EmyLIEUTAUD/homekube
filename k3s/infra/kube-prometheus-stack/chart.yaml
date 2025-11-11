@@ -45,3 +45,8 @@ spec:
             scheme: http
             static_configs:
               - targets: ['navidrome.navidrome:4533']
+          - job_name: 'jellyfin'
+            metrics_path: /metrics
+            scheme: http
+            static_configs:
+              - targets: ['jellyfin.jellyfin:8096']
