@@ -24,8 +24,8 @@ spec:
   values:
     ingress:
       enabled: true
-        hosts:
-          - kite.home
+      hosts:
+        - kite.home
       className: traefik
     db:
       sqlite:
