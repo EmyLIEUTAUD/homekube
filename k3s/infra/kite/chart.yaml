@@ -25,7 +25,10 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - kite.home
+        - host: kite.home
+          paths:
+          - path: /
+            pathType: ImplementationSpecific
       className: traefik
     db:
       sqlite:
