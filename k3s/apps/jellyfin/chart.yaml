@@ -16,11 +16,6 @@ spec:
     apps:
       - name: jellyfin
         image: jellyfin/jellyfin:10.11.2@sha256:d43a8878689311f841a1967f899f54db56877bf6b426fd7ff870ac1a6fd1dce4
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          supplementalGroups:
-          - 303
         podSecurityContext:
           privileged: true
         env:
