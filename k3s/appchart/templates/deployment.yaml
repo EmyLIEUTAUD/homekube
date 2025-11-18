@@ -26,6 +26,10 @@ spec:
           ports:
             - containerPort: {{ .containerPort }}
           {{- end }}
+          {{- if .podSecurityContext }}
+          securityContext:
+            {{- toYaml .podSecurityContext | nindent 12 }}
+          {{- end }}
           {{- if .env }}
           env: 
             {{- toYaml .env | nindent 12 }}

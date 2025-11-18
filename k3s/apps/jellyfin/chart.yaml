@@ -21,6 +21,8 @@ spec:
           runAsGroup: 1000
           supplementalGroups:
           - 303
+        podSecurityContext:
+          privileged: true
         env:
           - name: JELLYFIN_CONFIG_DIR
             value: /config
