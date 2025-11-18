@@ -14,6 +14,10 @@ spec:
       labels:
         app: {{ .name }}
     spec:
+      {{- if .securityContext }}
+      securityContext:
+        {{- toYaml .securityContext | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .name }}
           image: {{ .image }}
