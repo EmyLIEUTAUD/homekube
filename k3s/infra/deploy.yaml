@@ -138,7 +138,7 @@ metadata:
 spec:
   interval: 10m0s
   targetNamespace: db
-  path: ./k3s/infra/cnpg
+  path: ./k3s/infra/postgres
   prune: true
   sourceRef:
     kind: GitRepository
