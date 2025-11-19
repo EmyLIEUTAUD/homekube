@@ -137,8 +137,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  targetNamespace: supervision
-  path: ./k3s/infra/cloudnative-pg
+  targetNamespace: db
+  path: ./k3s/infra/cnpg
   prune: true
   sourceRef:
     kind: GitRepository
