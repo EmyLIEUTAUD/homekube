@@ -18,10 +18,9 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: immich
-      version: 0.10.3
+      chart: '.'
       sourceRef:
-        kind: HelmRepository
+        kind: OCIRepository
         name: immich
   values:
     controllers:
