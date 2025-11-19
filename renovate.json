@@ -36,6 +36,11 @@
       "matchPackageNames": ["/.*beszel.*/"],
       "groupName": "beszel",
       "groupSlug": "beszel"
+    },
+    {
+      "matchPackageNames": ["/.*immich.*/"],
+      "groupName": "immich",
+      "groupSlug": "immich"
     }
   ]
 }
