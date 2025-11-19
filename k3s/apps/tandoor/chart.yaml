@@ -51,7 +51,7 @@ spec:
           - name: tandoor-mediafiles
             persistentVolumeClaim:
               claimName: tandoor-mediafiles
-        service: 8080
+        service: 80
         ingress:
           domain: tandoor.home
         pvc:
