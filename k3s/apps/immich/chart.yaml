@@ -16,12 +16,10 @@ metadata:
   name: immich
 spec:
   interval: 10m
-  chart:
-    spec:
-      chart: '.'
-      sourceRef:
-        kind: OCIRepository
-        name: immich
+  chartRef:
+    sourceRef:
+      kind: OCIRepository
+      name: immich
   values:
     controllers:
       main:
