@@ -19,22 +19,22 @@ spec:
         env:
           - name: TZ
             value: Europe/Paris
-          - name: DB_HOSTNAME
+          - name: POSTGRES_HOST
             valueFrom:
               secretKeyRef:
                 name: tandoor-database-app
                 key: host
-          - name: DB_USERNAME
+          - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
                 name: tandoor-database-app
                 key: user
-          - name: DB_PASSWORD
+          - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: tandoor-database-app
                 key: password
-          - name: DB_DATABASE_NAME
+          - name: POSTGRES_DB
             valueFrom:
               secretKeyRef:
                 name: tandoor-database-app
