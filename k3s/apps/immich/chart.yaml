@@ -17,9 +17,8 @@ metadata:
 spec:
   interval: 10m
   chartRef:
-    sourceRef:
-      kind: OCIRepository
-      name: immich
+    kind: OCIRepository
+    name: immich
   values:
     controllers:
       main:
