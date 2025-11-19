@@ -3,10 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-library
 spec:
-  volumeName: immich-library
-  storageClassName: nfs
-  accessModes:
+  accessModes: 
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi
+  storageClassName: nfs
