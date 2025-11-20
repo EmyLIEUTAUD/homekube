@@ -19,11 +19,18 @@ spec:
         env:
           - name: TZ
             value: Europe/Paris
+          - name: DB_ENGINE
+            value: django.db.backends.postgresql
           - name: POSTGRES_HOST
             valueFrom:
               secretKeyRef:
                 name: tandoor-database-app
                 key: host
+          - name: POSTGRES_PORT
+            valueFrom:
+              secretKeyRef:
+                name: tandoor-database-app
+                key: port
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
