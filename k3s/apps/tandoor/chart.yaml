@@ -71,6 +71,7 @@ spec:
                 mountPath: /opt/recipes/staticfiles
               - name: tandoor-mediafiles
                 mountPath: /opt/recipes/mediafiles
+        name: tandoor
         image: vabene1111/recipes:2.3.5
         command:
           - /opt/recipes/venv/bin/gunicorn
