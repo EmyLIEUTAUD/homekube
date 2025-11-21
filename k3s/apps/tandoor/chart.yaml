@@ -65,7 +65,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: tandoor-secret-key
-                  key: SECRET_KEYdoor
+                  key: SECRET_KEY
             volumeMounts:
               - name: tandoor-staticfiles
                 mountPath: /opt/recipes/staticfiles
