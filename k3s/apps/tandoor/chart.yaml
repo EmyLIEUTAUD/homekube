@@ -32,7 +32,7 @@ spec:
               find /opt/recipes/mediafiles -type f | xargs -r chmod 644
               echo "Done"
             env: 
-            - name: tan- name: TZ
+            - name: TZ
               value: Europe/Paris
             - name: DB_ENGINE
               value: django.db.backends.postgresql

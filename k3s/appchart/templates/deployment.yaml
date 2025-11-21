@@ -19,10 +19,10 @@ spec:
         {{- toYaml .securityContext | nindent 8 }}
       {{- end }}
       {{- if .initContainers }}
-      {{- range .initContainers}}
       initContainers:
+         {{- range .initContainers }}
         - name: {{ .name }}
-          image: {{ .image}}
+          image: {{ .image }}
           imagePullPolicy: {{ .imagePullPolicy | default "IfNotPresent" }}
           command:
             {{- toYaml .command | nindent 12}}
