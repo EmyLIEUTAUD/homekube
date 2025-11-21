@@ -14,8 +14,74 @@ spec:
         namespace: flux-system
   values:
     apps:
-      - name: tandoor
+      - initContainers:
+          - name: init-chmod-data
+            image: vabene1111/recipes:2.3.5
+            command:
+            - sh
+            - '-c'
+            - |
+              set -e
+              source venv/bin/activate
+              echo "Updating database"
+              python manage.py migrate
+              python manage.py collectstatic --noinput
+              echo "Setting media file attributes"
+              chown -R 65534:65534 /opt/recipes/mediafiles
+              find /opt/recipes/mediafiles -type d | xargs -r chmod 755
+              find /opt/recipes/mediafiles -type f | xargs -r chmod 644
+              echo "Done"
+            env: 
+            - name: tan- name: TZ
+              value: Europe/Paris
+            - name: DB_ENGINE
+              value: django.db.backends.postgresql
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-database-app
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-database-app
+                  key: port
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-database-app
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-database-app
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-database-app
+                  key: dbname
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-secret-key
+                  key: SECRET_KEYdoor
+            volumeMounts:
+              - name: tandoor-staticfiles
+                mountPath: /opt/recipes/staticfiles
+              - name: tandoor-mediafiles
+                mountPath: /opt/recipes/mediafiles
         image: vabene1111/recipes:2.3.5
+        command:
+          - /opt/recipes/venv/bin/gunicorn
+          - '--bind'
+          - 0.0.0.0:80
+          - '--workers=3'
+          - recipes.wsgi
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
         env:
           - name: TZ
             value: Europe/Paris

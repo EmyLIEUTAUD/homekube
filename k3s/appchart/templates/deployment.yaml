@@ -18,6 +18,28 @@ spec:
       securityContext:
         {{- toYaml .securityContext | nindent 8 }}
       {{- end }}
+      {{- if .initContainers }}
+      {{- range .initContainers}}
+      initContainers:
+        - name: {{ .name }}
+          image: {{ .image}}
+          imagePullPolicy: {{ .imagePullPolicy | default "IfNotPresent" }}
+          command:
+            {{- toYaml .command | nindent 12}}
+          {{- if .env }}
+          env:
+            {{- toYaml .env | nindent 12 }}
+          {{- end }}
+          {{- if .volumeMounts}}
+          volumeMounts:
+            {{- toYaml .volumeMounts | nindent 12 }}
+          {{- end }}
+          {{- if .resources }}
+          resources:
+            {{- toYaml .resources | nindent 12 }}
+          {{- end }}
+      {{- end }}
+      {{- end }}
       containers:
         - name: {{ .name }}
           image: {{ .image }}
@@ -25,6 +47,10 @@ spec:
           {{- if .containerPort }}
           ports:
             - containerPort: {{ .containerPort }}
+          {{- end }}
+          {{- if .command }}
+          command:
+            {{- toYaml .command | nindent 12}}
           {{- end }}
           {{- if .podSecurityContext }}
           securityContext:
