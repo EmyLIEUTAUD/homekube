@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: piper
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: piper
+        image: rhasspy/wyoming-piper:2.1.2
+        env:
+          - name: TZ
+            value: Europe/Paris
+          - name: PIPER_VOICE
+            value: fr_FR-lydia-medium
+        volumeMounts:
+          - name: piper-data
+            mountPath: /data
+        volumes:
+          - name: piper-data
+            persistentVolumeClaim:
+              claimName: piper-data
+        service: 5000
+        ingress:
+          domain: piper.home
+        pvc:
+          - piper-data
