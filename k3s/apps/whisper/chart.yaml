@@ -19,10 +19,11 @@ spec:
         env:
           - name: TZ
             value: Europe/Paris
-          - name: WHISPER_LANG
-            value: fr
-          - name: WHISPER_MODEL
-            value: medium
+        args:
+          - "--model"
+          - "medium"
+          - "--language"
+          - "fr"
         volumeMounts:
           - name: whisper-data
             mountPath: /data
