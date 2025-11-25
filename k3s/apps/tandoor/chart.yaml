@@ -118,8 +118,6 @@ spec:
               secretKeyRef:
                 name: tandoor-secret-key
                 key: SECRET_KEY
-          - name: ENABLE_PDF_EXPORT
-            value: '1'
         volumeMounts:
           - name: tandoor-staticfiles
             mountPath: /opt/recipes/staticfiles
