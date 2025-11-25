@@ -19,8 +19,9 @@ spec:
         env:
           - name: TZ
             value: Europe/Paris
-          - name: PIPER_VOICE
-            value: fr_FR-lydia-medium
+        args:
+          - "--voice"
+          - "fr_FR-lydia-medium"
         volumeMounts:
           - name: piper-data
             mountPath: /data

@@ -52,6 +52,10 @@ spec:
           command:
             {{- toYaml .command | nindent 12}}
           {{- end }}
+          {{- if .args }}
+          args:
+            {{- toYaml .args | nindent 12 }}
+          {{- end }}
           {{- if .podSecurityContext }}
           securityContext:
             {{- toYaml .podSecurityContext | nindent 12 }}
