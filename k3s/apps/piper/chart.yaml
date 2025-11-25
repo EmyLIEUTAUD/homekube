@@ -21,7 +21,7 @@ spec:
             value: Europe/Paris
         args:
           - "--voice"
-          - "fr_FR-lydia-medium"
+          - "fr_FR-upmc-medium"
         volumeMounts:
           - name: piper-data
             mountPath: /data
