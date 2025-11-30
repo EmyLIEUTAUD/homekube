@@ -23,6 +23,8 @@ spec:
             value: Europe/Paris
           - name: PAPERLESS_OCR_LANGUAGE
             value: fra
+          - name: PAPERLESS_BIND_ADDR
+            value: 0.0.0.0
           - name: PAPERLESS_REDIS
             value: redis://paperless-redis:6379
           - name: PAPERLESS_DBHOST
