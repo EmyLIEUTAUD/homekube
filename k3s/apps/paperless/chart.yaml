@@ -26,6 +26,8 @@ spec:
             value: fra
           - name: PAPERLESS_BIND_ADDR
             value: 0.0.0.0
+          - name: PAPERLESS_PORT
+            value: '8000'
           - name: PAPERLESS_URL
             value: http://paperless.home
           - name: PAPERLESS_REDIS
