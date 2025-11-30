@@ -16,6 +16,7 @@ spec:
     apps:
       - name: paperless
         image: ghcr.io/paperless-ngx/paperless-ngx:2.20.0
+        containerPort: 8000
         env:
           - name: TZ
             value: Europe/Paris
@@ -25,6 +26,8 @@ spec:
             value: fra
           - name: PAPERLESS_BIND_ADDR
             value: 0.0.0.0
+          - name: PAPERLESS_URL
+            value: http://paperless.home
           - name: PAPERLESS_REDIS
             value: redis://paperless-redis:6379
           - name: PAPERLESS_DBHOST
