@@ -22,7 +22,7 @@ spec:
         volumeMounts:
           - name: adguard-work
             mountPath: /opt/adguardhome/work
-          - name: /opt/adguardhome/conf
+          - name: adguard-conf
             mountPath: /opt/adguardhome/conf
         volumes:
           - name: adguard-work
