@@ -11,7 +11,7 @@ spec:
   ports:
     - port: {{ .service }}
       targetPort: {{ .service }}
-      protocol: TCP
+      protocol: {{ .protocol | default "TCP" }}
       name: {{ .service | quote }}
 {{- end }}
 {{- end }}
