@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: adguard
-        image: adguard/adguardhome:v0.107.70
+        image: adguard/adguardhome:v0.107.70@sha256:33e2240c466b2bb1d4fe9d65fd86178160bf6ee8835cf7b50ab3a7c5e39571fe
         env:
           - name: TZ
             value: Europe/Paris
