@@ -20,7 +20,7 @@ spec:
           envFrom:
             - secretRef:
                 name: beszel-agent-key
-          image: henrygd/beszel-agent:0.17.0@sha256:730ac49d1a89d315b5a9424ad8cca2f586e981da7caf151c5ec2d599f474efad
+          image: henrygd/beszel-agent:0.18.1@sha256:03a33713d2cc76745f67a972aa25256c52b7dd2d071823cd15441e2e012c841d
           imagePullPolicy: Always
           name: beszel-agent
           ports:
