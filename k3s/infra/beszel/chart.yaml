@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: beszel
-        image: henrygd/beszel:0.17.0@sha256:185142e6c91bd44c77fef6cd31784aee0f782eb1d7193c3ee34a9902a936621c
+        image: henrygd/beszel:0.18.1@sha256:67c0075a05ff800d480abe0ac56879d689092fc3f0710fd1a638feb3a81b2061
         volumeMounts:
           - name: beszel-data
             mountPath: /beszel_data
