@@ -25,7 +25,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - host: kite.home
+        - host: kite.lan
           paths:
           - path: /
             pathType: ImplementationSpecific

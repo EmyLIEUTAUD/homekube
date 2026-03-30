@@ -25,6 +25,6 @@ spec:
               claimName: uptime-kuma-data
         service: 3001
         ingress:
-          domain: uptime-kuma.home
+          domain: uptime-kuma.lan
         pvc:
           - uptime-kuma-data

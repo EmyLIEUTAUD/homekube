@@ -28,7 +28,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - grafana.home
+          - grafana.lan
         ingressClassName: traefik
       persistence:
         enabled: true

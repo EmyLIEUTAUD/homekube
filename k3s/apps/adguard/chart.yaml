@@ -33,7 +33,7 @@ spec:
               claimName: adguard-conf
         service: 80
         ingress:
-          domain: adguard.home
+          domain: adguard.lan
         pvc:
           - adguard-work
           - adguard-conf

@@ -31,6 +31,6 @@ spec:
               claimName: piper-data
         service: 10200
         ingress:
-          domain: piper.home
+          domain: piper.lan
         pvc:
           - piper-data

@@ -36,7 +36,7 @@ spec:
               claimName: home-assistant-dbus
         service: 8123
         ingress:
-          domain: home-assistant.home
+          domain: home-assistant.lan
         pvc:
           - home-assistant-config
           - home-assistant-localtime
