@@ -30,3 +30,5 @@ spec:
       name: tailscale-oauth
       valuesKey: clientSecret
       targetPath: oauth.clientSecret
+  values:
+    installCRDs: "true"
