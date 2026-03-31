@@ -57,7 +57,7 @@ spec:
               type: Directory
         service: 8096
         ingress:
-          domain: jellyfin.home
+          domain: jellyfin.lan
         pvc:
           - jellyfin-config
           - jellyfin-data

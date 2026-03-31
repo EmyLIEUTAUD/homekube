@@ -60,7 +60,7 @@ spec:
         main:
           enabled: true
           hosts:
-            - host: immich.home
+            - host: immich.lan
               paths:
                 - path: "/"
                   service:

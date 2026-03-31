@@ -116,7 +116,7 @@ apps:
           claimName: tandoor-mediafiles
     service: 80
     ingress:
-      domain: tandoor.home
+      domain: tandoor.lan
     pvc:
       - tandoor-staticfiles
       - tandoor-mediafiles

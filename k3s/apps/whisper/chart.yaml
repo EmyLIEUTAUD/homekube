@@ -33,6 +33,6 @@ spec:
               claimName: whisper-data
         service: 10300
         ingress:
-          domain: whisper.home
+          domain: whisper.lan
         pvc:
           - whisper-data

@@ -29,7 +29,7 @@ spec:
           - name: PAPERLESS_PORT
             value: '8000'
           - name: PAPERLESS_URL
-            value: http://paperless.home
+            value: http://paperless.lan
           - name: PAPERLESS_REDIS
             value: redis://paperless-redis:6379
           - name: PAPERLESS_DBHOST
@@ -81,7 +81,7 @@ spec:
               claimName: paperless-consume
         service: 8000
         ingress:
-          domain: paperless.home
+          domain: paperless.lan
         pvc:
           - paperless-data
           - paperless-media
