@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: filebrowser
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: ./k3s/appchart
+      version: "x.x.x"
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    apps:
+      - name: filebrowser
+        image: filebrowser/filebrowser:v2.63.2
+        volumeMounts:
+          - name: filebrowser-config
+            mountPath: /config
+          - name: filebrowser-database
+            mountPath: /database
+          - name: jellyfin-media
+            mountPath: /srv/jellyfin
+        volumes:
+          - name: filebrowser-config
+            persistentVolumeClaim:
+              claimName: filebrowser-config
+          - name: filebrowser-database
+            persistentVolumeClaim:
+              claimName: filebrowser-database
+          - name: jellyfin-media
+            persistentVolumeClaim:
+              claimName: jellyfin-media
+        service: 80
+        ingress:
+          domain: filebrowser.lan
+        pvc:
+          - filebrowser-config
+          - filebrowser-database
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
