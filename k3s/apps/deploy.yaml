@@ -118,7 +118,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  targetNamespace: filebrowser
+  targetNamespace: jellyfin
   path: ./k3s/apps/filebrowser
   prune: true
   sourceRef:
