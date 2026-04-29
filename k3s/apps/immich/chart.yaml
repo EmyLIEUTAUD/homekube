@@ -7,7 +7,7 @@ spec:
   interval: 15m
   url: oci://ghcr.io/immich-app/immich-charts/immich
   ref:
-    tag: 0.11.1
+    tag: 0.11.1@sha256:d1f37674407ac82544410b5d74c0ced3f917843491571069a9339c963400ba56
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
