@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: home-assistant
-        image: ghcr.io/home-assistant/home-assistant:2025.11.2@sha256:02f582ea7d25f41761282ac0965baf89f0009efed3ad92f8d7eaba5eb6ffd9a8
+        image: home-assistant/home-assistant:2026.5.1
         containerPort: 8123
         volumeMounts:
           - name: home-assistant-config
