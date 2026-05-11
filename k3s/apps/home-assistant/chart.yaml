@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: home-assistant
-        image: home-assistant/home-assistant:2026.5.1
+        image: homeassistant/home-assistant:2026.5.1
         containerPort: 8123
         volumeMounts:
           - name: home-assistant-config
