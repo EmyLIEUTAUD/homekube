@@ -40,7 +40,8 @@
     {
       "matchPackageNames": ["/.*immich.*/"],
       "groupName": "immich",
-      "groupSlug": "immich"
+      "groupSlug": "immich",
+      "pinDigests": false
     }
   ]
 }
