@@ -1,0 +1,18 @@
+{{- if .ingress }}
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .name }}-cors-header
+spec:
+  headers:
+    accessControlAllowMethods:
+      - "GET"
+      - "OPTIONS"
+      - "PUT"
+    accessControlAllowHeaders:
+      - "*"
+    accessControlAllowOriginList:
+      - http://{{ .ingress.cors }}
+    accessControlMaxAge: 100
+    addVaryHeader: true
+{{- end }}
