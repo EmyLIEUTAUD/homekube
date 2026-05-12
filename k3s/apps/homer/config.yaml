@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homer-config
+data:
+  config.yml: |
+    title: Home
+    subtitle: Dashboard
+    theme: dark
+
+    header: false
+    footer: false
+    columns: 4
+
+    connectivityCheck: true
+
+    services:
+      
+      - name: "🎬 Médias"
+        items:
+          - name: Jellyfin
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyfin.svg"
+            url: "http://jellyfin.lan"
+            target: "_blank"
+            keywords: "jellyfin film films serie series série séries anime animes musique musiques"
+
+          - name: FileBrowser
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filebrowser.svg"
+            url: "http://filebrowser.lan"
+            target: "_blank"
+            keywords: "filebrowser fichier fichiers deposer déposer"
+
+      - name: "📊 Supervision"
+        items:
+          - name: Uptime Kuma
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg"
+            url: "http://uptime-kuma.lan"
+            target: "_blank"
+            keywords: "uptime-kuma kuma supervision service services up status statut down"
+
+          - name: Grafana
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg"
+            url: "http://grafana.lan"
+            target: "_blank"
+            keywords: "grafana supervision dashboard dashboards"
+
+          - name: Beszel
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/beszel.svg"
+            url: "http://beszel.lan"
+            target: "_blank"
+            keywords: "beszel supervision alerte alertes métrique métriques metrique metriques metric metrics"
+
+      - name: "🌐 Réseau & Infra"
+        items:
+          - name: AdGuard Home
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adguard-home.svg"
+            url: "http://adguard.lan"
+            target: "_blank"
+            keywords: "adguard ads pub pubs"
+
+          - name: NAS
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/asustor.svg"
+            url: "http://192.168.1.24:8000"
+            target: "_blank"
+            keywords: "nas stockage storage"
+
+          - name: Kite
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/kubernetes-dashboard.svg"
+            url: "http://kite.lan"
+            target: "_blank"
+            keywords: "kite dashboard kubernetes"
+
+          - name: GitHub Homekube
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg"
+            url: "https://github.com/EmyLIEUTAUD/homekube/tree/main"
+            target: "_blank"
+            keywords: "github homekube"
+
+      - name: "🧩 Applications"
+        items:
+          - name: Home Assistant
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/home-assistant.svg"
+            url: "http://home-assistant.lan"
+            target: "_blank"
+            keywords: "home-assistant home assistant"
+
+          - name: Paperless
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg"
+            url: "http://paperless.lan"
+            target: "_blank"
+            keywords: "paperless fichier fichiers document documents"
+
+          - name: Tandoor
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/tandoor-recipes.svg"
+            url: "http://tandoor.lan"
+            target: "_blank"
+            keywords: "tandoor recette recettes cuisine"
