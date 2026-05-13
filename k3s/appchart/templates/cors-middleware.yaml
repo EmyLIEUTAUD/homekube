@@ -1,3 +1,4 @@
+{{- range .Values.apps }}
 {{- if .ingress }}
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
@@ -15,4 +16,5 @@ spec:
       - http://{{ .ingress.cors }}
     accessControlMaxAge: 100
     addVaryHeader: true
+{{- end }}
 {{- end }}
