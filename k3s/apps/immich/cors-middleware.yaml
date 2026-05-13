@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: immich-cors-header
+spec:
+  headers:
+    accessControlAllowHeaders:
+    - '*'
+    accessControlAllowMethods:
+    - GET
+    - OPTIONS
+    - PUT
+    accessControlAllowOriginList:
+    - http://immich.lan
+    - http://home.lan
+    accessControlMaxAge: 100
+    addVaryHeader: true
