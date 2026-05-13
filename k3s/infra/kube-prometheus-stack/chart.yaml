@@ -27,6 +27,8 @@ spec:
     grafana:
       ingress:
         enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: supervision-grafana-cors-header@kubernetescrd
         hosts:
           - grafana.lan
         ingressClassName: traefik
