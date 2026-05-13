@@ -24,6 +24,8 @@ spec:
   values:
     ingress:
       enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: kite-kite-cors-header@kubernetescrd
       hosts:
         - host: kite.lan
           paths:
