@@ -31,6 +31,7 @@ data:
             url: "http://filebrowser.lan"
             target: "_blank"
             keywords: "filebrowser fichier fichiers deposer déposer"
+            method: get
 
           - name: Immich
             type: Ping
@@ -77,6 +78,7 @@ data:
             url: "http://192.168.1.24:8000"
             target: "_blank"
             keywords: "nas stockage storage"
+            method: get
 
           - name: Kite
             type: Ping
@@ -99,6 +101,7 @@ data:
             url: "http://home-assistant.lan"
             target: "_blank"
             keywords: "home-assistant home assistant"
+            method: get
 
           - name: Paperless
             type: Ping
@@ -113,3 +116,4 @@ data:
             url: "http://tandoor.lan"
             target: "_blank"
             keywords: "tandoor recette recettes cuisine"
+            method: get
