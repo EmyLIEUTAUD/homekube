@@ -32,6 +32,13 @@ data:
             target: "_blank"
             keywords: "filebrowser fichier fichiers deposer déposer"
 
+          - name: Immich
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg"
+            url: "http://immich.lan"
+            target: "_blank"
+            keywords: "immich photo photos galerie gallery sauvegarde backup image images video videos vidéo vidéos"
+
       - name: "📊 Supervision"
         items:
           - name: Uptime Kuma
