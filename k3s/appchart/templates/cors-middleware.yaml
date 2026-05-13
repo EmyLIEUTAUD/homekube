@@ -14,6 +14,7 @@ spec:
       - "*"
     accessControlAllowOriginList:
       - http://{{ .ingress.domain }}
+      - http://home.lan
     accessControlMaxAge: 100
     addVaryHeader: true
 {{- end }}
