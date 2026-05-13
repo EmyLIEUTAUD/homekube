@@ -4,11 +4,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .name }}
-  {{- if .ingress.annotations }}
   annotations:
+    {{- if .ingress.annotations }}
     {{- toYaml .ingress.annotations | nindent 4 }}
-    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace}}-{{ .name }}-cors-header@kubernetescrd
-  {{- end }}
+    {{- end }}
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-{{ .name }}-cors-header@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
