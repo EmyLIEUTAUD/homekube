@@ -13,7 +13,7 @@ spec:
     accessControlAllowHeaders:
       - "*"
     accessControlAllowOriginList:
-      - http://{{ .ingress.cors }}
+      - http://{{ .ingress.domain }}
     accessControlMaxAge: 100
     addVaryHeader: true
 {{- end }}
