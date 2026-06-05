@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: filebrowser
-        image: filebrowser/filebrowser:v2.63.6@sha256:738e984198074d25e0134ace6a8ba63537ff44b4f48bcc8421935a8dc8082492
+        image: filebrowser/filebrowser:v2.63.9@sha256:bf6a77a330c0690da1ee2769e1c49e8194c61bd8aeffa97964dc71476b912017
         volumeMounts:
           - name: filebrowser-config
             mountPath: /config
