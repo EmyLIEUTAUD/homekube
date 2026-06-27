@@ -15,7 +15,7 @@ spec:
   values:
     apps:
       - name: whisper
-        image: rhasspy/wyoming-whisper:3.2.0@sha256:966e1b0967f398b81fa2273a96b2b940004fa1b77754f9ffda6b5689a58dd158
+        image: rhasspy/wyoming-whisper:3.3.0@sha256:bc63b1eeb9fe100971371c1dd75e67d6fac4ab70eaa14827ba4e453abde50201
         env:
           - name: TZ
             value: Europe/Paris
