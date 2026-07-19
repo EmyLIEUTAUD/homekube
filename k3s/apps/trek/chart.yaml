@@ -5,7 +5,7 @@ metadata:
   name: trek
 spec:
   interval: 15m
-  url: https://mauriceboe.github.io/TREK
+  url: https://mauriceboe.github.io
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
