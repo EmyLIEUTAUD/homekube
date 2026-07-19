@@ -27,6 +27,8 @@ spec:
       DEFAULT_LANGUAGE: "fr"
       APP_URL: "http://trek.lan"
 
+    existingSecret: trek-secrets
+
     ingress:
       enabled: true
       className: traefik
