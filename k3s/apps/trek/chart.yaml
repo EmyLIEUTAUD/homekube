@@ -28,6 +28,7 @@ spec:
       TZ: "Europe/Paris"
       DEFAULT_LANGUAGE: "fr"
       APP_URL: "http://trek.lan"
+      COOKIE_SECURE: false
 
     existingSecret: trek-secrets
 
