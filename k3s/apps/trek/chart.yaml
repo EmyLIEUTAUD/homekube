@@ -22,8 +22,6 @@ spec:
         kind: HelmRepository
         name: trek
   values:
-    image:
-      repository: mauriceboe/trek
     env:
       TZ: "Europe/Paris"
       DEFAULT_LANGUAGE: "fr"
