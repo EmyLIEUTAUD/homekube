@@ -40,14 +40,17 @@ spec:
             mountPath: /dev/dri
         volumes:
           - name: jellyfin-config
-            persistentVolumeClaim:
-              claimName: jellyfin-config
+            hostPath:
+              path: /home/homekube/jellyfin/config
+              type: DirectoryOrCreate
           - name: jellyfin-data
-            persistentVolumeClaim:
-              claimName: jellyfin-data
+            hostPath:
+              path: /home/homekube/jellyfin/data
+              type: DirectoryOrCreate
           - name: jellyfin-cache
-            persistentVolumeClaim:
-              claimName: jellyfin-cache
+            hostPath:
+              path: /home/homekube/jellyfin/cache
+              type: DirectoryOrCreate
           - name: jellyfin-media
             persistentVolumeClaim:
               claimName: jellyfin-media
@@ -59,9 +62,6 @@ spec:
         ingress:
           domain: jellyfin.lan
         pvc:
-          - jellyfin-config
-          - jellyfin-data
-          - jellyfin-cache
           - jellyfin-media
         resources:
           requests:
