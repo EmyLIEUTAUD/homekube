@@ -19,6 +19,7 @@ metadata:
   name: tdarr
   namespace: flux-system
 spec:
+  interval: 10m0s
   targetNamespace: jellyfin
   path: ./k3s/apps/tdarr
   prune: true
