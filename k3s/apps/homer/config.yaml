@@ -117,3 +117,11 @@ data:
             target: "_blank"
             keywords: "tandoor recette recettes cuisine"
             method: get
+
+         - name: Trek
+            type: Ping
+            logo: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/trek-light.svg"
+            url: "http://trek.lan"
+            target: "_blank"
+            keywords: "trek voyage voyages"
+            method: get
