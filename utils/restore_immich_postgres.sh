@@ -81,8 +81,8 @@ for deployment in "${!ORIGINAL_REPLICAS[@]}"; do
 done
 
 TOC_LIST=$(mktemp)
-REMOTE_DUMP="/tmp/immich-restore-$$.dump"
-REMOTE_TOC_LIST="/tmp/immich-restore-$$.list"
+REMOTE_DUMP="/var/lib/postgresql/data/immich-restore-$$.dump"
+REMOTE_TOC_LIST="/var/lib/postgresql/data/immich-restore-$$.list"
 
 cleanup_restore() {
   rm -f "$TOC_LIST"
