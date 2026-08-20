@@ -7,7 +7,6 @@ spec:
 
   storage:
     size: 20Gi
-    storageClass: immich-cnpg-local
 
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
 

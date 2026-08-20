@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-postgres-data
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  claimRef:
+    namespace: immich
+    name: immich-database-1
+  hostPath:
+    path: /home/homekube/immich/cnpg
+    type: DirectoryOrCreate
