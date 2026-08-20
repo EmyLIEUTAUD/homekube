@@ -14,3 +14,13 @@ Ce que fait le script :
 > **Attention**
 > Ce script force la suppression d'un namespace sans attendre que les ressources soient nettoyées proprement.
 > A utiliser en dernier recours uniquement
+
+## Restauration de la base PostgreSQL d'Immich
+
+Le script attend un dump créé avec `pg_dump --format=custom` :
+
+```bash
+bash restore_immich_postgres.sh <chemin-vers-le-dump.dump>
+```
+
+Immich doit être arrêté avant de confirmer la restauration. Le script utilise `--clean` et remplace les objets existants.
