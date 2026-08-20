@@ -98,7 +98,7 @@ kubectl cp "$DUMP_FILE" "$NAMESPACE/$PRIMARY_POD:$REMOTE_DUMP" -c postgres
 
 echo "Analyse du dump..."
 kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -c postgres -- \
-  pg_restore --list "$REMOTE_DUMP" | sed '/ EXTENSION - /d' > "$TOC_LIST"
+  pg_restore --list "$REMOTE_DUMP" | sed '/EXTENSION/d' > "$TOC_LIST"
 
 echo "Préparation de la restauration..."
 kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -c postgres -- \
