@@ -118,7 +118,7 @@ data:
             keywords: "tandoor recette recettes cuisine"
             method: get
 
-         - name: Trek
+          - name: Trek
             type: Ping
             logo: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/trek-light.svg"
             url: "http://trek.lan"
