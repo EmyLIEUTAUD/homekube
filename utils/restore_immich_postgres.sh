@@ -5,6 +5,8 @@ set -euo pipefail
 NAMESPACE="immich"
 CLUSTER="immich-database"
 SECRET="immich-database-app"
+APP_DEPLOYMENTS=("immich-server" "immich-machine-learning")
+declare -A ORIGINAL_REPLICAS=()
 
 usage() {
   echo "Usage: $0 <dump.dump>"
@@ -29,6 +31,7 @@ command -v kubectl >/dev/null || {
   exit 1
 }
 
+PGHOST=$(kubectl get secret "$SECRET" -n "$NAMESPACE" -o jsonpath='{.data.host}' | base64 --decode)
 PGUSER=$(kubectl get secret "$SECRET" -n "$NAMESPACE" -o jsonpath='{.data.user}' | base64 --decode)
 PGDATABASE=$(kubectl get secret "$SECRET" -n "$NAMESPACE" -o jsonpath='{.data.dbname}' | base64 --decode)
 PGPASSWORD=$(kubectl get secret "$SECRET" -n "$NAMESPACE" -o jsonpath='{.data.password}' | base64 --decode)
@@ -43,18 +46,43 @@ fi
 
 echo "Dump       : $DUMP_FILE"
 echo "Pod primaire : $PRIMARY_POD"
+echo "Hôte       : $PGHOST"
 echo "Base       : $PGDATABASE"
 echo
 echo "ATTENTION : la restauration utilise --clean et supprime les objets existants."
-read -r -p "Immich est-il arrêté et veux-tu continuer ? [y/N] " confirmation
+read -r -p "Immich sera arrêté pendant la restauration. Continuer ? [y/N] " confirmation
 
 if [[ "$confirmation" != "y" && "$confirmation" != "Y" ]]; then
   echo "Restauration annulée."
   exit 0
 fi
 
+restart_immich() {
+  for deployment in "${!ORIGINAL_REPLICAS[@]}"; do
+    echo "Redémarrage de $deployment avec ${ORIGINAL_REPLICAS[$deployment]} replica(s)..."
+    kubectl scale deployment "$deployment" -n "$NAMESPACE" \
+      --replicas="${ORIGINAL_REPLICAS[$deployment]}" >/dev/null
+  done
+}
+
+trap restart_immich EXIT
+
+for deployment in "${APP_DEPLOYMENTS[@]}"; do
+  if kubectl get deployment "$deployment" -n "$NAMESPACE" >/dev/null 2>&1; then
+    ORIGINAL_REPLICAS[$deployment]=$(kubectl get deployment "$deployment" -n "$NAMESPACE" \
+      -o jsonpath='{.spec.replicas}')
+  fi
+done
+
+echo "Arrêt des composants Immich actifs..."
+for deployment in "${!ORIGINAL_REPLICAS[@]}"; do
+  if [[ "${ORIGINAL_REPLICAS[$deployment]}" != "0" ]]; then
+    kubectl scale deployment "$deployment" -n "$NAMESPACE" --replicas=0 >/dev/null
+  fi
+done
+
 cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
-  env PGPASSWORD="$PGPASSWORD" pg_restore \
+  env PGHOST="$PGHOST" PGPASSWORD="$PGPASSWORD" pg_restore \
     --username="$PGUSER" \
     --dbname="$PGDATABASE" \
     --clean \
