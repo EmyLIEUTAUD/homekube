@@ -23,4 +23,4 @@ Le script attend un dump créé avec `pg_dump --format=custom` :
 bash restore_immich_postgres.sh <chemin-vers-le-dump.dump>
 ```
 
-Immich doit être arrêté avant de confirmer la restauration. Le script utilise `--clean` et remplace les objets existants.
+Le script arrête les composants Immich actifs pendant la restauration, puis les redémarre dans leur état initial. Il utilise `--clean` et exclut les extensions PostgreSQL déjà gérées par CNPG.

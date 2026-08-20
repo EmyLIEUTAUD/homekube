@@ -7,6 +7,7 @@ CLUSTER="immich-database"
 SECRET="immich-database-app"
 APP_DEPLOYMENTS=("immich-server" "immich-machine-learning")
 declare -A ORIGINAL_REPLICAS=()
+TOC_LIST=""
 
 usage() {
   echo "Usage: $0 <dump.dump>"
@@ -65,8 +66,6 @@ restart_immich() {
   done
 }
 
-trap restart_immich EXIT
-
 for deployment in "${APP_DEPLOYMENTS[@]}"; do
   if kubectl get deployment "$deployment" -n "$NAMESPACE" >/dev/null 2>&1; then
     ORIGINAL_REPLICAS[$deployment]=$(kubectl get deployment "$deployment" -n "$NAMESPACE" \
@@ -81,6 +80,15 @@ for deployment in "${!ORIGINAL_REPLICAS[@]}"; do
   fi
 done
 
+TOC_LIST=$(mktemp)
+trap 'rm -f "$TOC_LIST"; restart_immich' EXIT
+
+pg_restore --list "$DUMP_FILE" | sed '/ EXTENSION - /d' > "$TOC_LIST"
+REMOTE_TOC_LIST="/tmp/immich-restore-$$.list"
+
+kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
+  sh -c "cat > '$REMOTE_TOC_LIST'" < "$TOC_LIST"
+
 cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
   env PGHOST="$PGHOST" PGPASSWORD="$PGPASSWORD" pg_restore \
     --username="$PGUSER" \
@@ -89,6 +97,9 @@ cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
     --if-exists \
     --no-owner \
     --no-acl \
+    --use-list="$REMOTE_TOC_LIST" \
     --exit-on-error
+
+kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -- rm -f "$REMOTE_TOC_LIST"
 
 echo "Restauration terminée."
