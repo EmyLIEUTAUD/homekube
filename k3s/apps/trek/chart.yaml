@@ -27,7 +27,8 @@ spec:
       DEFAULT_LANGUAGE: "fr"
       APP_URL: "http://trek.lan"
       COOKIE_SECURE: "false"
-
+      ALLOW_INTERNAL_NETWORK: "true"
+      
     existingSecret: trek-secrets
 
     ingress:
