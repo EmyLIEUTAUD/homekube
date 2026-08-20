@@ -81,16 +81,31 @@ for deployment in "${!ORIGINAL_REPLICAS[@]}"; do
 done
 
 TOC_LIST=$(mktemp)
-trap 'rm -f "$TOC_LIST"; restart_immich' EXIT
-
-cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
-  pg_restore --list | sed '/ EXTENSION - /d' > "$TOC_LIST"
+REMOTE_DUMP="/tmp/immich-restore-$$.dump"
 REMOTE_TOC_LIST="/tmp/immich-restore-$$.list"
 
-kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
+cleanup_restore() {
+  rm -f "$TOC_LIST"
+  kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -- \
+    rm -f "$REMOTE_DUMP" "$REMOTE_TOC_LIST" >/dev/null 2>&1 || true
+  restart_immich
+}
+
+trap cleanup_restore EXIT
+
+echo "Copie du dump dans le pod..."
+kubectl cp "$DUMP_FILE" "$NAMESPACE/$PRIMARY_POD:$REMOTE_DUMP" -c postgres
+
+echo "Analyse du dump..."
+kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -c postgres -- \
+  pg_restore --list "$REMOTE_DUMP" | sed '/ EXTENSION - /d' > "$TOC_LIST"
+
+echo "Préparation de la restauration..."
+kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -c postgres -- \
   sh -c "cat > '$REMOTE_TOC_LIST'" < "$TOC_LIST"
 
-cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
+echo "Restauration en cours (mode verbeux)..."
+kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -c postgres -- \
   env PGHOST="$PGHOST" PGPASSWORD="$PGPASSWORD" pg_restore \
     --username="$PGUSER" \
     --dbname="$PGDATABASE" \
@@ -99,8 +114,8 @@ cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
     --no-owner \
     --no-acl \
     --use-list="$REMOTE_TOC_LIST" \
-    --exit-on-error
-
-kubectl exec -n "$NAMESPACE" "$PRIMARY_POD" -- rm -f "$REMOTE_TOC_LIST"
+    --verbose \
+    --exit-on-error \
+    "$REMOTE_DUMP"
 
 echo "Restauration terminée."
