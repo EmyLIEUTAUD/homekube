@@ -5,6 +5,12 @@ metadata:
 spec:
   instances: 1
 
+  podTemplate:
+    spec:
+      securityContext:
+        fsGroup: 26
+        fsGroupChangePolicy: OnRootMismatch
+
   storage:
     size: 20Gi
 
