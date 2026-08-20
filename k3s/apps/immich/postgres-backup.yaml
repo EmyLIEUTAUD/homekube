@@ -1,0 +1,67 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-postgres-backups
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: nfs
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: immich-postgres-backup
+spec:
+  schedule: "15 6,13 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: pg-dump
+              image: postgres:16-alpine
+              env:
+                - name: PGHOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-database-app
+                      key: host
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-database-app
+                      key: user
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-database-app
+                      key: password
+                - name: PGDATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-database-app
+                      key: dbname
+              command:
+                - /bin/sh
+                - -c
+                - >-
+                  set -eu;
+                  backup=/backups/immich-$(date -u +%Y-%m-%dT%H-%M-%SZ).dump;
+                  pg_dump --format=custom --file="$backup";
+                  find /backups -type f -name 'immich-*.dump' -mtime +10 -delete
+              volumeMounts:
+                - name: backups
+                  mountPath: /backups
+          volumes:
+            - name: backups
+              persistentVolumeClaim:
+                claimName: immich-postgres-backups
