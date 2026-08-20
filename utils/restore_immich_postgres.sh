@@ -83,7 +83,8 @@ done
 TOC_LIST=$(mktemp)
 trap 'rm -f "$TOC_LIST"; restart_immich' EXIT
 
-pg_restore --list "$DUMP_FILE" | sed '/ EXTENSION - /d' > "$TOC_LIST"
+cat "$DUMP_FILE" | kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
+  pg_restore --list | sed '/ EXTENSION - /d' > "$TOC_LIST"
 REMOTE_TOC_LIST="/tmp/immich-restore-$$.list"
 
 kubectl exec -i -n "$NAMESPACE" "$PRIMARY_POD" -- \
