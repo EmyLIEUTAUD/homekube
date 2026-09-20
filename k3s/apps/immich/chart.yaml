@@ -60,7 +60,7 @@ spec:
         main:
           enabled: true
           annotations:
-            traefik.ingress.kubernetes.io/router.middlewares: immich-immich-cors-header@kubernetescrd
+            traefik.ingress.kubernetes.io/router.middlewares: immich-immich-cors-header@kubernetescrd,immich-immich-upload@kubernetescrd
           hosts:
             - host: immich.lan
               paths:

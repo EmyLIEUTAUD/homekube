@@ -9,6 +9,7 @@ spec:
     accessControlAllowMethods:
     - GET
     - OPTIONS
+    - POST
     - PUT
     accessControlAllowOriginList:
     - http://immich.lan
