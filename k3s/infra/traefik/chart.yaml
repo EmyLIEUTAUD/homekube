@@ -30,7 +30,9 @@ spec:
       name: traefik
     additionalArguments:
       - "--entryPoints.web.transport.respondingTimeouts.readTimeout=1h"
+      - "--entryPoints.web.transport.respondingTimeouts.writeTimeout=1h"
       - "--entryPoints.websecure.transport.respondingTimeouts.readTimeout=1h"
+      - "--entryPoints.websecure.transport.respondingTimeouts.writeTimeout=1h"
     providers:
       kubernetesIngress:
         ingressClass: "traefik"
