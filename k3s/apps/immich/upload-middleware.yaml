@@ -5,3 +5,4 @@ metadata:
 spec:
   buffering:
     maxRequestBodyBytes: 0
+    maxResponseBodyBytes: 0
