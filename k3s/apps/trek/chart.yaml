@@ -31,6 +31,10 @@ spec:
       
     existingSecret: trek-secrets
 
+    persistence:
+      data:
+        existingClaim: trek-local-data
+
     ingress:
       enabled: true
       className: traefik
