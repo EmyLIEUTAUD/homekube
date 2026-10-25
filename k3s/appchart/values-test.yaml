@@ -1,7 +1,7 @@
 apps:
   - initContainers:
     - name: init-chmod-data
-      image: vabene1111/recipes:2.7.0@sha256:ec91506acfc9fdbb10700d0836d0932facf040f75a316c064c7046e63dc70c89
+      image: vabene1111/recipes:2.7.1@sha256:10e3d2cef6b4eaa24a9c548a25dc892ce70266fc888bd85d4b349eb5a7143945
       command:
       - sh
       - '-c'
@@ -56,7 +56,7 @@ apps:
           mountPath: /opt/recipes/staticfiles
         - name: tandoor-mediafiles
           mountPath: /opt/recipes/mediafiles
-    image: vabene1111/recipes:2.7.0@sha256:ec91506acfc9fdbb10700d0836d0932facf040f75a316c064c7046e63dc70c89
+    image: vabene1111/recipes:2.7.1@sha256:10e3d2cef6b4eaa24a9c548a25dc892ce70266fc888bd85d4b349eb5a7143945
     command:
       - /opt/recipes/venv/bin/gunicorn
       - '--bind'
